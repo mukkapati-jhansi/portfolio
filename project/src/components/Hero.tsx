@@ -29,11 +29,11 @@ export default function Hero() {
         {/* Typing Animation */}
         <TypeAnimation
           sequence={[
-            'Software Developer',
+            'AI & Machine Learning Engineer',
             2000,
-            'Machine Learning Enthusiast',
+            'Python & Flask Developer',
             2000,
-            'Full Stack Developer',
+            'Data Analytics Enthusiast',
             2000,
           ]}
           wrapper="span"
