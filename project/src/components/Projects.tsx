@@ -12,7 +12,7 @@ export default function Projects() {
       gradient: 'from-cyan-500 to-blue-500',
       githubUrl: '',
       liveUrl: '',
-      image: '/images/bookstore.png',
+      image: 'images/bookstore.png'
     },
     {
       title: 'Fake News Detection',
@@ -25,7 +25,7 @@ export default function Projects() {
       githubUrl:
         'https://github.com/mukkapati-jhansi/Fake-News-Classifier.git',
       liveUrl: 'https://lnkd.in/d_gmCdqb',
-      image: '/images/fake-news.png',
+      image: 'images/fake-news.png'
     },
     {
       title: 'Tic Tac Toe Game',
@@ -38,7 +38,7 @@ export default function Projects() {
       githubUrl:
          'https://github.com/Jhansi1441/PRODIGY_WD_03.git',
       liveUrl: 'https://lnkd.in/gx89Uw5s',
-      image: '/images/tictactoe.png',
+      image: 'images/tictactoe.png',
     },
     {
       title: 'Weather Report App',
@@ -51,7 +51,7 @@ export default function Projects() {
       githubUrl:
          'https://github.com/Jhansi1441/PRODIGY_WD_05.git',
       liveUrl: 'https://lnkd.in/gu-BYAjB',
-      image: '/images/weather.png',
+      image: 'images/weather.png',
     },
   ];
 
