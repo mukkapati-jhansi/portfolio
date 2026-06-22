@@ -21,8 +21,11 @@ export default function Experience() {
       period: 'June 2024 – July 2024',
       location: 'Remote',
       achievements: [
-        'Developed responsive web pages using HTML, CSS, and JavaScript',
-        'Worked on multiple mini-projects following real-world development practices',
+        'Developed responsive and interactive web pages using HTML, CSS, and JavaScript',
+        'Built and deployed multiple web development projects including a portfolio website, stopwatch, weather application, and Tic-Tac-Toe game',
+        'Implemented user-friendly interfaces with responsive layouts to ensure compatibility across different devices and screen sizes',
+        'Applied real-world front-end development practices including DOM manipulation, event handling, and API integration',
+        'Enhanced website usability through modern design principles, clean code structure, and optimized performance'
       ],
     },
   ];
