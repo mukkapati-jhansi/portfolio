@@ -70,6 +70,7 @@ export default function Projects() {
         icon: HeartPulse,
         gradient: 'from-indigo-600 to-violet-600',
         githubUrl: 'https://github.com/mukkapati-jhansi/Health-Prediction-System.git',
+        liveUrl: 'https://lnkd.in/dY38cD9q',
         image: 'images/health-prediction.png',
     },
   ];
