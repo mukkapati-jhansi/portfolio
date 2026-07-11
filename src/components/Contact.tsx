@@ -1,6 +1,69 @@
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
 
 export default function Contact() {
+    const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const [loading, setLoading] = useState(false);
+
+const [status, setStatus] = useState<{
+  type: "success" | "error";
+  message: string;
+} | null>(null);
+
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setLoading(true);
+  setStatus(null);
+
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
+
+    setStatus({
+      type: "success",
+      message: "✅ Thank you for reaching out! I'll get back to you as soon as possible.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+
+    setStatus({
+      type: "error",
+      message: "❌ Failed to send message. Please try again.",
+    });
+  }
+
+  setLoading(false);
+};
   return (
     <section id="contact" className="min-h-screen py-20 px-4 bg-slate-900/50">
       <div className="max-w-6xl mx-auto">
@@ -86,39 +149,64 @@ export default function Contact() {
           <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700">
             <h3 className="text-2xl font-bold text-slate-200 mb-6">Send a Message</h3>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-slate-300 mb-2">Name</label>
                 <input
-                  type="text"
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all"
-                  placeholder="Your name"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all"
+                placeholder="Your name"
                 />
               </div>
 
               <div>
                 <label className="block text-slate-300 mb-2">Email</label>
                 <input
-                  type="email"
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all"
-                  placeholder="your.email@example.com"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all"
+                placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
                 <label className="block text-slate-300 mb-2">Message</label>
                 <textarea
-                  rows={5}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all resize-none"
-                  placeholder="Your message..."
-                ></textarea>
+                rows={5}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}required
+                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all resize-none"
+                placeholder="Your message..."
+                />
+
+              {status && (
+  <div
+    className={`rounded-lg p-3 text-sm ${
+      status.type === "success"
+        ? "bg-green-500/10 text-green-400 border border-green-500/20"
+        : "bg-red-500/10 text-red-400 border border-red-500/20"
+    }`}
+  >
+    {status.message}
+  </div>
+)}
+
               </div>
 
               <button
-                type="submit"
-                className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center gap-2 group"
+              type="submit"
+              disabled={loading}
+              className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-60 disabled:hover:shadow-none disabled:cursor-not-allowed"
               >
-                <span>Send Message</span>
+                <span>{loading ? "Sending..." : "Send Message"}</span>
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
@@ -127,7 +215,7 @@ export default function Contact() {
 
         <div className="mt-12 text-center">
           <p className="text-slate-400">
-            © 2024 Mukkapati Jhansi. All rights reserved.
+            © {new Date().getFullYear()} Mukkapati Jhansi. All rights reserved.
           </p>
         </div>
       </div>
