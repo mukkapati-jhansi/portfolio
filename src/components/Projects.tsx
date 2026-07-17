@@ -73,6 +73,27 @@ export default function Projects() {
         liveUrl: 'https://lnkd.in/dY38cD9q',
         image: 'images/health-prediction.png',
     },
+    {
+  title: 'AI-Powered CSV Importer & CRM Data Extractor',
+  year: '2026',
+  description:
+    'Built a full-stack AI-powered CSV importer that validates and previews CSV files, extracts structured CRM records using Google Gemini AI, supports search and CSV export, and delivers a responsive user experience with real-time processing feedback.',
+  technologies: [
+    'Next.js',
+    'TypeScript',
+    'Tailwind CSS',
+    'Node.js',
+    'Express.js',
+    'Multer',
+    'Google Gemini AI',
+  ],
+  icon: Database,
+  gradient: 'from-indigo-600 to-violet-600',
+  githubUrl: 'https://github.com/mukkapati-jhansi/Groweasy-AI-CSV-Importer.git',
+  liveUrl: 'https://groweasy-ai-csv-importer-gamma.vercel.app',
+  backendUrl: 'https://groweasy-ai-csv-importer-qrpk.onrender.com/',
+  image: 'images/ai-csv.png',
+},
   ];
 
   return (
