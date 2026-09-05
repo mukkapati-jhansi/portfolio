@@ -19,18 +19,11 @@ export default function Certificates() {
         'https://rhtapps.redhat.com/verify?certId=240-189-142',
     },
     {
-      title: 'Salesforce Certified AI Associate',
-      issuer: 'Salesforce',
-      year: '2024',
-      image: 'images/salesforce.png',
-      verifyUrl: '',
-    },
-    {
       title: 'Generative AI Virtual Internship',
       issuer: 'Google Cloud & EduSkills',
       year: '2024',
       image: 'images/ai-internship.png',
-      verifyUrl: '',
+      verifyUrl: 'https://aictecert.eduskillsfoundation.org/pages/home/verify.php?cert=389cb8033bb94a4e40ebde680709765e',
     },
   ];
 
