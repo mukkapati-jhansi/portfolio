@@ -1,80 +1,201 @@
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Menu,
+  Phone,
+  X,
+} from "lucide-react";
+
+import { useState } from "react";
 
 interface NavigationProps {
   activeSection: string;
 }
 
-export default function Navigation({ activeSection }: NavigationProps) {
+export default function Navigation({
+  activeSection,
+}: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
+    { id: "home", label: "HOME" },
+    { id: "about", label: "ABOUT" },
+    { id: "projects", label: "WORK" },
+    { id: "certificates", label: "CERTIFICATES" },
+    { id: "experience", label: "EXPERIENCE" },
+    { id: "skills", label: "SKILLS" },
+    { id: "contact", label: "CONTACT" },
   ];
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setIsOpen(false);
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent">
-            MJ
-          </div>
+    <>
+      {/* Desktop navigation */}
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050505]/85 px-6 text-white backdrop-blur-xl md:px-10">
 
-          <div className="hidden md:flex space-x-8">
+        <div className="mx-auto flex h-16 max-w-[1450px] items-center justify-between">
+
+          {/* Logo */}
+          <button
+            onClick={() => scrollToSection("home")}
+            className="text-[10px] font-medium tracking-[0.2em] text-white transition-opacity hover:opacity-60"
+          >
+            MUKKAPATI JHANSI.
+          </button>
+
+          {/* Desktop links */}
+          <div className="hidden items-center gap-7 lg:flex">
+
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`transition-all duration-300 ${
+                className={`relative text-[8px] tracking-[0.18em] transition-colors duration-300 ${
                   activeSection === item.id
-                    ? 'text-indigo-400 font-semibold'
-                    : 'text-slate-300 hover:text-indigo-400'
+                    ? "text-white"
+                    : "text-white/35 hover:text-white"
                 }`}
               >
                 {item.label}
+
+                {activeSection === item.id && (
+                  <span className="absolute -bottom-6 left-0 h-px w-full bg-white" />
+                )}
               </button>
             ))}
+
           </div>
 
-          <button
-            className="md:hidden text-slate-300"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
+          {/* Social */}
+          <div className="hidden items-center gap-4 sm:flex">
 
-      {isOpen && (
-        <div className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-700">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`block w-full text-left px-4 py-3 transition-all ${
-                activeSection === item.id
-                  ? 'text-indigo-400 bg-slate-800'
-                  : 'text-slate-300 hover:bg-slate-800'
-              }`}
+            <a
+              href="https://github.com/Jhansi1441"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/30 transition-colors hover:text-white"
             >
-              {item.label}
-            </button>
-          ))}
+              <Github size={15} strokeWidth={1.4} />
+            </a>
+
+            <a
+              href="https://linkedin.com/in/mukkapatijhansi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/30 transition-colors hover:text-white"
+            >
+              <Linkedin size={15} strokeWidth={1.4} />
+            </a>
+
+            <a
+              href="mailto:mukkapati.jhansi2004@gmail.com"
+              className="text-white/30 transition-colors hover:text-white"
+            >
+              <Mail size={15} strokeWidth={1.4} />
+            </a>
+
+          </div>
+
+          {/* Mobile menu */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white/60 transition-colors hover:text-white lg:hidden"
+            aria-label="Toggle navigation"
+          >
+            {isOpen ? (
+              <X size={20} />
+            ) : (
+              <Menu size={20} />
+            )}
+          </button>
+
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 bg-[#050505] pt-24 text-white lg:hidden">
+
+          <div className="px-6">
+
+            <span className="text-[9px] tracking-[0.25em] text-white/25">
+              NAVIGATION
+            </span>
+
+            <div className="mt-8">
+
+              {navItems.map((item, index) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="flex w-full items-center justify-between border-t border-white/10 py-5 text-left"
+                >
+                  <span
+                    className={`text-2xl tracking-[-0.03em] ${
+                      activeSection === item.id
+                        ? "text-white"
+                        : "text-white/45"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+
+                  <span className="text-[8px] tracking-[0.15em] text-white/20">
+                    0{index + 1}
+                  </span>
+                </button>
+              ))}
+
+            </div>
+
+            <div className="mt-10 flex gap-5 border-t border-white/10 pt-6">
+
+              <a
+                href="https://github.com/Jhansi1441"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-white"
+              >
+                <Github size={17} />
+              </a>
+
+              <a
+                href="https://linkedin.com/in/mukkapatijhansi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-white"
+              >
+                <Linkedin size={17} />
+              </a>
+
+              <a
+                href="mailto:mukkapati.jhansi2004@gmail.com"
+                className="text-white/40 hover:text-white"
+              >
+                <Mail size={17} />
+              </a>
+
+              <a
+                href="tel:+919052979551"
+                className="text-white/40 hover:text-white"
+              >
+                <Phone size={17} />
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
       )}
-    </nav>
+    </>
   );
 }

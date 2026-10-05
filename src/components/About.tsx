@@ -1,107 +1,92 @@
-import { GraduationCap } from 'lucide-react';
-import photo from "../assets/photo.jpg";
+"use client";
 
 export default function About() {
   return (
-    <section id="about" className="min-h-screen py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="about"
+      className="border-t border-white/10 bg-[#050505] px-6 py-24 text-white md:px-10 md:py-32"
+    >
+      <div className="mx-auto max-w-[1400px]">
+        {/* Section heading */}
+        <div className="mb-16 flex items-end justify-between border-b border-white/10 pb-6">
+          <div>
+            <p className="mb-4 text-[11px] font-medium tracking-[0.25em] text-white/40">
+              02 — ABOUT
+            </p>
 
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          <span className="bg-gradient-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent">
-            About Me
+            <h2 className="text-4xl font-medium tracking-[-0.04em] md:text-6xl">
+              ABOUT ME.
+            </h2>
+          </div>
+
+          <span className="hidden text-xs tracking-[0.2em] text-white/30 md:block">
+            AI · SOFTWARE · DESIGN
           </span>
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-
-          {/* LEFT SIDE - PHOTO */}
-          <div className="flex justify-center">
-            <img
-              src={photo}
-              alt="Profile"
-              className="w-[380px] object-contain rounded-2xl shadow-2xl"
-            />
-          </div>
-
-          {/* RIGHT SIDE - CONTENT */}
-          <div className="space-y-8">
-
-            {/* EDUCATION */}
-            <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700 hover:border-indigo-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/20">
-
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-indigo-500/20 rounded-lg">
-                  <GraduationCap className="w-6 h-6 text-indigo-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-200">Education</h3>
-              </div>
-
-              <div className="space-y-6">
-
-                {/* B.Tech */}
-                <div className="border-l-2 border-indigo-500 pl-4">
-                  <h4 className="text-xl font-semibold text-slate-200">
-                    K L University
-                  </h4>
-                  <p className="text-indigo-400">
-                    B.Tech in Computer Science & Engineering
-                  </p>
-                  <p className="text-slate-400">
-                    Specialization: AI & IPA
-                  </p>
-                  <p className="text-slate-400">
-                    2022 - 2026 | 87%
-                  </p>
-                </div>
-
-                {/* Intermediate */}
-                <div className="border-l-2 border-slate-600 pl-4">
-                  <h4 className="text-lg font-semibold text-slate-200">
-                    Harvest Public School
-                  </h4>
-                  <p className="text-slate-400">
-                    Intermediate | 2020 - 2022 | 69%
-                  </p>
-                </div>
-
-                {/* 10th Class */}
-                <div className="border-l-2 border-slate-600 pl-4">
-                  <h4 className="text-lg font-semibold text-slate-200">
-                    Harvest Public School
-                  </h4>
-                  <p className="text-slate-400">
-                    Secondary School (10th) | 2019 - 2020 | 71%
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-            {/* CAREER OBJECTIVE */}
-            <div className="bg-slate-800/60 backdrop-blur-xl
-hover:border-indigo-500/40
-hover:shadow-xl
-hover:shadow-indigo-500/20
-transition-all duration-300 rounded-xl p-8 border border-slate-700">
-
-              <h3 className="text-2xl font-bold text-slate-200 mb-4">
-                Career Objective
-              </h3>
-
-              <p className="text-slate-300 leading-relaxed">
-                Aspiring Software Engineer specializing in Artificial Intelligence
-                and Intelligent Process Automation (AI & IPA). Skilled in Python,
-                C, web development and machine learning with hands-on project
-                experience. Seeking opportunities to contribute to innovative
-                development teams while continuously learning and growing as
-                a developer.
-              </p>
-
-            </div>
-
-          </div>
         </div>
 
+        <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:gap-20">
+          {/* Left */}
+          <div>
+            <p className="text-sm uppercase tracking-[0.18em] text-white/40">
+              COMPUTER SCIENCE
+            </p>
+
+            <p className="mt-6 text-2xl leading-relaxed tracking-[-0.02em] text-white/80 md:text-3xl">
+              I build intelligent digital experiences where software,
+              artificial intelligence and thoughtful design come together.
+            </p>
+          </div>
+
+          {/* Right */}
+          <div className="space-y-6 text-[15px] leading-8 text-white/55">
+            <p>
+              I&apos;m Jhansi, a Computer Science graduate focused on
+              AI-powered applications, software development and modern
+              frontend experiences.
+            </p>
+
+            <p>
+              My work spans machine learning, generative AI, full-stack
+              development and data-driven applications. I enjoy turning
+              complex ideas into products that are useful, intuitive and
+              visually refined.
+            </p>
+
+            <p>
+              I&apos;m particularly interested in building products that
+              combine intelligent systems with strong user experiences.
+            </p>
+
+            <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3">
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-white/30">
+                  FOCUS
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  AI / ML
+                </p>
+              </div>
+
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-white/30">
+                  DEVELOPMENT
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  Full Stack
+                </p>
+              </div>
+
+              <div>
+                <p className="text-[10px] tracking-[0.18em] text-white/30">
+                  DESIGN
+                </p>
+                <p className="mt-2 text-sm text-white/70">
+                  UI / UX
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

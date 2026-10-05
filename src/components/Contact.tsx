@@ -1,223 +1,136 @@
-import { useState } from "react";
-import emailjs from "@emailjs/browser";
-import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
+"use client";
+
+import { ArrowUpRight, Mail } from "lucide-react";
 
 export default function Contact() {
-    const [formData, setFormData] = useState({
-  name: "",
-  email: "",
-  message: "",
-});
-
-const [loading, setLoading] = useState(false);
-
-const [status, setStatus] = useState<{
-  type: "success" | "error";
-  message: string;
-} | null>(null);
-
-const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-) => {
-  setFormData({
-    ...formData,
-    [e.target.name]: e.target.value,
-  });
-};
-
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  setLoading(true);
-  setStatus(null);
-
-  try {
-    await emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    );
-
-    setStatus({
-      type: "success",
-      message: "✅ Thank you for reaching out! I'll get back to you as soon as possible.",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  } catch (error) {
-    console.error("EmailJS Error:", error);
-
-    setStatus({
-      type: "error",
-      message: "❌ Failed to send message. Please try again.",
-    });
-  }
-
-  setLoading(false);
-};
   return (
-    <section id="contact" className="min-h-screen py-20 px-4 bg-slate-900/50">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-          <span className="bg-gradient-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent">
-            Get In Touch
-          </span>
-        </h2>
+    <section
+      id="contact"
+      className="border-t border-white/10 bg-[#050505] px-6 py-24 text-white md:px-10 md:py-32"
+    >
+      <div className="mx-auto max-w-[1400px]">
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700">
-              <h3 className="text-2xl font-bold text-slate-200 mb-6">Contact Information</h3>
-
-              <div className="space-y-4">
-                <a
-                  href="mailto:mukkapatijhansi2004@gmail.com"
-                  className="flex items-center gap-4 p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all group"
-                >
-                  <div className="p-3 bg-indigo-500/20 rounded-lg group-hover:bg-indigo-500/30 transition-all">
-                    <Mail className="w-5 h-5 text-indigo-400" />
-                  </div>
-                  <div>
-                    <p className="text-slate-400 text-sm">Email</p>
-                    <p className="text-slate-200 group-hover:text-indigo-400 transition-colors">
-                      mukkapatijhansi2004@gmail.com
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  href="tel:+919052979551"
-                  className="flex items-center gap-4 p-4 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all group"
-                >
-                  <div className="p-3 bg-indigo-500/20 rounded-lg group-hover:bg-indigo-500/30 transition-all">
-                    <Phone className="w-5 h-5 text-indigo-300" />
-                  </div>
-                  <div>
-                    <p className="text-slate-400 text-sm">Phone</p>
-                    <p className="text-slate-200 group-hover:text-indigo-300 transition-colors">
-                      +91 9052979551
-                    </p>
-                  </div>
-                </a>
-
-                <div className="flex items-center gap-4 p-4 bg-slate-700/30 rounded-lg">
-                  <div className="p-3 bg-indigo-500/20 rounded-lg">
-                    <MapPin className="w-5 h-5 text-indigo-300" />
-                  </div>
-                  <div>
-                    <p className="text-slate-400 text-sm">Location</p>
-                    <p className="text-slate-200">Garlapadu, Khammam, Telangana</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-8 border-t border-slate-700">
-                <h4 className="text-lg font-semibold text-slate-200 mb-4">Connect with me</h4>
-                <div className="flex gap-4">
-                  <a
-                    href="https://github.com/Jhansi1441"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-3 bg-slate-700/30 rounded-lg hover:bg-indigo-500/20 transition-all group"
-                  >
-                    <Github className="w-5 h-5 text-slate-300 group-hover:text-indigo-300 transition-colors" />
-                    <span className="text-slate-300 group-hover:text-indigo-300 transition-colors">GitHub</span>
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/mukkapatijhansi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-3 bg-slate-700/30 rounded-lg hover:bg-indigo-500/20 transition-all group"
-                  >
-                    <Linkedin className="w-5 h-5 text-slate-300 group-hover:text-indigo-300 transition-colors" />
-                    <span className="text-slate-300 group-hover:text-indigo-300 transition-colors">LinkedIn</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-slate-800/50 backdrop-blur-lg rounded-2xl p-8 border border-slate-700">
-            <h3 className="text-2xl font-bold text-slate-200 mb-6">Send a Message</h3>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-slate-300 mb-2">Name</label>
-                <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all"
-                placeholder="Your name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-slate-300 mb-2">Email</label>
-                <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all"
-                placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-slate-300 mb-2">Message</label>
-                <textarea
-                rows={5}
-                name="message"
-                value={formData.message}
-                onChange={handleChange}required
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg focus:border-indigo-500 focus:outline-none text-slate-200 transition-all resize-none"
-                placeholder="Your message..."
-                />
-
-              {status && (
-  <div
-    className={`rounded-lg p-3 text-sm ${
-      status.type === "success"
-        ? "bg-green-500/10 text-green-400 border border-green-500/20"
-        : "bg-red-500/10 text-red-400 border border-red-500/20"
-    }`}
-  >
-    {status.message}
-  </div>
-)}
-
-              </div>
-
-              <button
-              type="submit"
-              disabled={loading}
-              className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-60 disabled:hover:shadow-none disabled:cursor-not-allowed"
-              >
-                <span>{loading ? "Sending..." : "Send Message"}</span>
-                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-slate-400">
-            © {new Date().getFullYear()} Mukkapati Jhansi. All rights reserved.
+        {/* Header */}
+        <div className="mb-16 flex items-end justify-between border-b border-white/10 pb-6">
+          <p className="text-[11px] font-medium tracking-[0.25em] text-white/40">
+            06 — CONTACT
           </p>
+
+          <span className="hidden text-xs tracking-[0.2em] text-white/30 md:block">
+            GET IN TOUCH
+          </span>
         </div>
+
+        <div className="grid gap-16 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+
+          {/* Main heading */}
+          <div>
+            <h2 className="max-w-4xl text-5xl font-medium leading-[0.95] tracking-[-0.055em] sm:text-6xl md:text-8xl">
+              <span className="block">LET&apos;S BUILD</span>
+              <span className="block">SOMETHING</span>
+              <span className="block text-white/45">INTERESTING.</span>
+            </h2>
+
+            {/* CTA */}
+            <a
+              href="mailto:mukkapatijhansi2004@gmail.com"
+              className="mt-10 inline-flex items-center gap-3 rounded-full !bg-white px-6 py-3 text-xs font-semibold tracking-[0.14em] !text-black transition-transform duration-300 hover:scale-105"
+            >
+              <span className="!text-black">
+                START A CONVERSATION
+              </span>
+
+              <ArrowUpRight
+                size={15}
+                className="!text-black"
+              />
+            </a>
+          </div>
+
+          {/* Contact details */}
+          <div className="md:pl-10">
+
+            <p className="mb-8 text-[11px] tracking-[0.22em] text-white/35">
+              GET IN TOUCH
+            </p>
+
+            {/* Email */}
+            <a
+              href="mailto:mukkapatijhansi2004@gmail.com"
+              className="group flex items-center justify-between border-b border-white/10 py-5"
+            >
+              <div className="flex items-center gap-4">
+                <Mail
+                  size={17}
+                  className="text-white/40"
+                />
+
+                <span className="text-sm text-white/70 transition-colors group-hover:text-white">
+                  mukkapatijhansi2004@gmail.com
+                </span>
+              </div>
+
+              <ArrowUpRight
+                size={16}
+                className="text-white/30 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+              />
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between border-b border-white/10 py-5"
+            >
+              <div className="flex items-center gap-4">
+                <span className="flex h-[17px] w-[17px] items-center justify-center text-[11px] font-bold text-white/40">
+                  in
+                </span>
+
+                <span className="text-sm text-white/70 transition-colors group-hover:text-white">
+                  LinkedIn
+                </span>
+              </div>
+
+              <ArrowUpRight
+                size={16}
+                className="text-white/30 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+              />
+            </a>
+
+            {/* GitHub */}
+            <a
+              href="https://github.com/mukkapati-jhansi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between border-b border-white/10 py-5"
+            >
+              <div className="flex items-center gap-4">
+                <span className="flex h-[17px] w-[17px] items-center justify-center text-[10px] font-bold text-white/40">
+                  GH
+                </span>
+
+                <span className="text-sm text-white/70 transition-colors group-hover:text-white">
+                  GitHub
+                </span>
+              </div>
+
+              <ArrowUpRight
+                size={16}
+                className="text-white/30 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+              />
+            </a>
+
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-24 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-[10px] tracking-[0.18em] text-white/30 sm:flex-row">
+          <span>AVAILABLE FOR OPPORTUNITIES</span>
+          <span>© 2026 JHANSI</span>
+        </div>
+
       </div>
     </section>
   );
