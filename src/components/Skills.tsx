@@ -277,7 +277,7 @@ export default function Skills() {
                 Turning raw data
                 <br />
                 <span className="text-white/30">
-                  into useful signals.
+                  into useful insights.
                 </span>
               </h3>
 

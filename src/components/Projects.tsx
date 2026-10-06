@@ -79,7 +79,6 @@ const projects = [
     ],
     github:
       "https://github.com/mukkapati-jhansi/Fake-News-Classifier.git",
-    live: "https://lnkd.in/d_gmCdqb",
     result: "92% CLASSIFICATION ACCURACY",
   },
 
@@ -118,7 +117,6 @@ const projects = [
     ],
     github:
       "https://github.com/Jhansi1441/PRODIGY_WD_05.git",
-    live: "https://lnkd.in/gu-BYAjB",
   },
 
   {
@@ -136,7 +134,6 @@ const projects = [
     ],
     github:
       "https://github.com/Jhansi1441/PRODIGY_WD_03.git",
-    live: "https://lnkd.in/gx89Uw5s",
   },
 ];
 
