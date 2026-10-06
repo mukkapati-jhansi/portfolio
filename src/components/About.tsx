@@ -28,28 +28,26 @@ export default function About() {
           {/* Left */}
           <div>
             <p className="text-sm uppercase tracking-[0.18em] text-white/40">
-              COMPUTER SCIENCE
+              COMPUTER SCIENCE · AI / ML
             </p>
 
             <p className="mt-6 text-2xl leading-relaxed tracking-[-0.02em] text-white/80 md:text-3xl">
-              I build intelligent digital experiences where software,
-              artificial intelligence and thoughtful design come together.
+              I’m a Computer Science graduate
+              building practical solutions with
+              AI, data and software.
             </p>
           </div>
 
           {/* Right */}
           <div className="space-y-6 text-[15px] leading-8 text-white/55">
             <p>
-              I&apos;m Jhansi, a Computer Science graduate focused on
-              AI-powered applications, software development and modern
-              frontend experiences.
+              My work focuses on turning ideas into practical applications across AI/ML,
+              generative AI, data analytics and full-stack development.
             </p>
 
             <p>
-              My work spans machine learning, generative AI, full-stack
-              development and data-driven applications. I enjoy turning
-              complex ideas into products that are useful, intuitive and
-              visually refined.
+              I enjoy exploring new technologies, building end-to-end projects and
+              solving problems through experimentation and continuous learning.
             </p>
 
             <p>

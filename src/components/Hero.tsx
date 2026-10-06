@@ -39,7 +39,7 @@ export default function Hero() {
         {/* TOP LINE */}
         <div className="flex items-center justify-between border-t border-white/10 pt-5">
           <span className="text-[9px] tracking-[0.28em] text-white/40">
-            01 — AI RESEARCH STUDIO
+            01 — INTRODUCTION
           </span>
 
           <span className="hidden text-[9px] tracking-[0.22em] text-white/25 md:block">
@@ -52,7 +52,7 @@ export default function Hero() {
           {/* LEFT SIDE */}
           <div className="relative z-10">
             <span className="mb-7 block text-[10px] tracking-[0.28em] text-white/35">
-              BUILDING INTELLIGENT SYSTEMS
+              B.TECH CSE · 2026 GRADUATE
             </span>
 
             {/* NAME */}
@@ -72,9 +72,7 @@ export default function Hero() {
             {/* DESCRIPTION */}
             <div className="mt-8">
               <p className="max-w-[620px] text-[13px] leading-7 text-white/45">
-                I build intelligent systems that turn research,
-                machine learning and generative AI into useful
-                products.
+                B.Tech CSE graduate with hands-on experience in AI/ML, generative AI, data analytics, and full-stack development.
               </p>
 
               {/* SKILL PILLS */}
@@ -211,22 +209,11 @@ export default function Hero() {
             </div>
 
             {/* PROFILE LABEL + NAME */}
+{/* PROFILE LABEL */}
 <div className="absolute bottom-[5%] left-1/2 z-20 -translate-x-1/2 text-center">
   <div
-    className={`mb-3 transition-all duration-700 ${
-      isHovered ? "-translate-y-1" : ""
-    }`}
-  >
-    <h2 className="whitespace-nowrap text-[15px] font-medium tracking-[0.18em] text-white md:text-[18px]">
-      MUKKAPATI JHANSI
-    </h2>
-  </div>
-
-  <div
     className={`mx-auto w-fit border border-white/15 bg-black/80 px-4 py-2 backdrop-blur-md transition-all duration-700 ${
-      isHovered
-        ? "border-white/40"
-        : ""
+      isHovered ? "border-white/40" : ""
     }`}
   >
     <span className="whitespace-nowrap text-[8px] tracking-[0.2em] text-white/60">
